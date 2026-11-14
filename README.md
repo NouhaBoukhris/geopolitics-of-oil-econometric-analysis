@@ -23,14 +23,30 @@ The original project report presents a **random-effects specification as preferr
 
 | Path | Description |
 | --- | --- |
-| `src/` | R analysis script (to be added) |
-| `data/` | Original analysis spreadsheets (to be added) |
-| [`docs/`](docs/) | [Final report](docs/Gulf_Crisis_Final_Report.pdf) and [R output screenshots](docs/R_Output_Screenshot.docx) |
+| [`src/analysis.R`](src/analysis.R) | Reorganized R analysis and ARIMA forecasting script |
+| [`src/EconProjFf_original.R`](src/EconProjFf_original.R) | Preserved original academic R script |
+| [`data/Gulf_Crisis_Finl.xlsx`](data/Gulf_Crisis_Finl.xlsx) | Observed 468-row panel dataset |
+| [`data/panel_data_gulf_crisis_2026.xlsx`](data/panel_data_gulf_crisis_2026.xlsx) | Extended dataset including projected months |
+| [`docs/Gulf_Crisis_Final_Report.pdf`](docs/Gulf_Crisis_Final_Report.pdf) | Original final academic report |
+| [`docs/R_Output_Screenshot.docx`](docs/R_Output_Screenshot.docx) | Recorded R model output screenshots |
 
+## Reproducibility
 
-## Reproducibility notes
+The reorganized script was executed successfully in [GitHub Actions](https://github.com/NouhaBoukhris/geopolitics-of-oil-econometric-analysis/actions/runs/43590051144), generating 468 processed observations and 72 ARIMA forecast rows. Matching all regression coefficients to the academic report is a separate validation step.
 
-The academic script uses an absolute local Windows file path and calls `install.packages()`. Before treating the code as reproducible, that path should be replaced with a relative file path, package installation should be documented separately, and data loading should be checked against the supplied workbook's sheets, headers, and dates. The archived source file and a cleaned runnable edition should remain distinguishable.
+Install R dependencies:
+
+```r
+install.packages(c("readxl", "dplyr", "ggplot2", "plm", "lmtest", "stargazer", "forecast"))
+```
+
+From the repository root, run:
+
+```bash
+Rscript src/analysis.R
+```
+
+Generated outputs are written to the ignored `outputs/` folder. The extended dataset includes projected April–June 2026 values and must not be treated as additional observed panel data.
 
 ## Contributors
 
