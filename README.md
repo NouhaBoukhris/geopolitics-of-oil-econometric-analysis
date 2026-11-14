@@ -60,7 +60,7 @@ These values agree with the main reported rounded figures. **The oil-price-chang
 
 ## Reproducibility
 
-The reorganized script was executed successfully in [GitHub Actions](https://github.com/NouhaBoukhris/geopolitics-of-oil-econometric-analysis/actions/runs/43590051144), generating 468 processed observations and 72 ARIMA forecast rows. Matching all regression coefficients to the academic report is a separate validation step.
+The reorganized script was executed successfully in [GitHub Actions](https://github.com/NouhaBoukhris/geopolitics-of-oil-econometric-analysis/actions/runs/43590051144), generating 468 processed observations and 72 ARIMA forecast rows. The principal regression coefficients and model-selection statistics were subsequently reproduced in the [regression audit](https://github.com/NouhaBoukhris/geopolitics-of-oil-econometric-analysis/actions/runs/43590270829); this is not a comprehensive verification of every finding in the academic report.
 
 Install R dependencies:
 
@@ -82,4 +82,4 @@ Group project by **Alaa Azouzi, Sarra Alioua, Nouha Boukhris, and Mariem Chammem
 
 ## Limitations
 
-The work uses only one observed post-crisis month in its primary sample. Regression coefficients reflect model associations and rely on assumptions that require further scrutiny; forecasts do not incorporate subsequent observed economic data. The submitted report's numerical findings have not yet been independently reproduced from the accompanying spreadsheets.
+The work uses only one observed post-crisis month in its primary sample. Regression coefficients reflect model associations and rely on assumptions that require further scrutiny; forecasts do not incorporate subsequent observed economic data. The main model-selection statistics and random-effects coefficients have been reproduced from the accompanying workbook, but not every result in the submitted report has been independently audited.
