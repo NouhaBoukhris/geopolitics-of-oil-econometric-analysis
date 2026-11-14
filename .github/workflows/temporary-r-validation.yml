@@ -30,6 +30,8 @@ jobs:
         run: |
           Rscript src/analysis.R
           Rscript -e 'x <- read.csv("outputs/processed_panel.csv"); stopifnot(nrow(x)==468, length(unique(x$country))==12); y <- read.csv("outputs/arima_forecasts.csv"); stopifnot(nrow(y)==72, all(is.finite(y$forecast))); print(summary(y$forecast))'
+      - name: Print model results for audit
+        run: cat outputs/model_results.txt
       - uses: actions/upload-artifact@v4
         if: always()
         with:
