@@ -19,6 +19,21 @@ The original project report presents a **random-effects specification as preferr
 
 **Interpretation caution:** These results should not be represented as identifying a causal effect of the oil shock. The original report states that the oil-price-change coefficient was not separately estimated and acknowledges endogeneity and the very short observed post-crisis period. ARIMA projections are *univariate forecasts*, not scenario-conditioned estimates of the geopolitical event.
 
+## Reproduced model results
+
+The [GitHub Actions regression audit](https://github.com/NouhaBoukhris/geopolitics-of-oil-econometric-analysis/actions/runs/43590270829) executed the reorganized script successfully against the observed 468-row panel.
+
+| Statistic | Reproduced result |
+| --- | ---: |
+| Hausman test p-value | 0.2727 |
+| Breusch–Pagan LM χ² | 6306.2 |
+| Random-effects coefficient: log NEER | −1.551583 |
+| Random-effects coefficient: policy rate | 0.003177 |
+| Random-effects coefficient: VIX | 0.003044 |
+| Random-effects coefficient: post-crisis | −0.000296 (p = 0.9824) |
+
+These values agree with the main reported rounded figures. **The oil-price-change term was not estimated** in the model output; the code does not establish the explanation for its omission. Both FE and RE are one-way **country-effects** specifications, not two-way country-and-time fixed effects. Model comparisons and robust standard errors do not establish causal identification.
+
 ## Project files
 
 | Path | Description |
