@@ -6,7 +6,7 @@ on:
       - '.github/workflows/temporary-r-validation.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -30,6 +30,18 @@ jobs:
         run: |
           Rscript src/analysis.R
           Rscript -e 'x <- read.csv("outputs/processed_panel.csv"); stopifnot(nrow(x)==468, length(unique(x$country))==12); y <- read.csv("outputs/arima_forecasts.csv"); stopifnot(nrow(y)==72, all(is.finite(y$forecast))); print(summary(y$forecast))'
+      - name: Publish verified visualizations
+        run: |
+          mkdir -p figures
+          cp outputs/brent_trend.png figures/brent_trend.png
+          cp outputs/cpi_trends.png figures/cpi_trends.png
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add figures/brent_trend.png figures/cpi_trends.png
+          if ! git diff --cached --quiet; then
+            git commit -m "Add reproducible oil and CPI trend visualizations"
+            git push
+          fi
       - name: Print model results for audit
         run: cat outputs/model_results.txt
       - uses: actions/upload-artifact@v4
