@@ -25,8 +25,8 @@ The original project report presents a **random-effects specification as preferr
 | --- | --- |
 | `src/` | R analysis script (to be added) |
 | `data/` | Original analysis spreadsheets (to be added) |
-| `docs/` | Final report and recorded R output (to be added) |
-| `images/` | Selected plots or model visualizations (to be added) |
+| [`docs/`](docs/) | [Final report](docs/Gulf_Crisis_Final_Report.pdf) and [R output screenshots](docs/R_Output_Screenshot.docx) |
+
 
 ## Reproducibility notes
 
